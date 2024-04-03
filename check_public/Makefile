@@ -44,10 +44,17 @@ pack:
 #	$(OUT_DIR)/<nume_problemă>
 # Pentru Java
 #	java -cp $(OUT_DIR) <NumeProblemă>
-run-p1:
-run-p2:
-run-p3:
-run-p4:
+run-p1: 
+	$(OUT_DIR)/servere
+run-p2: 
+	$(OUT_DIR)/colorare
+run-p3: 
+	$(OUT_DIR)/compresie
+run-p4: 
+	$(OUT_DIR)/criptat
+run-p5:
+	$(OUT_DIR)/oferta
+
 
 
 # Reguli pentru compilare. Probabil nu e nevoie să le modificați.

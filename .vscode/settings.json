@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "**/views/**/*.html": "django-html",
+        "*.html": "html",
+        "*.js": "javascript",
+        "*.c": "c",
+        "iosfwd": "cpp",
+        "iostream": "cpp",
+        "numeric": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
