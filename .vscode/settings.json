@@ -4,9 +4,11 @@
         "*.html": "html",
         "*.js": "javascript",
         "*.c": "c",
+        "*.cpp": "cpp",
         "iosfwd": "cpp",
         "iostream": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "numbers": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
