@@ -6,10 +6,19 @@
 ./colorare.cpp:30:  Missing space after ;  [whitespace/semicolon] [3]
 ./colorare.cpp:34:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
 ./colorare.cpp:34:  If an else has a brace on one side, it should have it on both  [readability/braces] [5]
+./criptat.cpp:40:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+./criptat.cpp:41:  Redundant blank line at the start of a code block should be deleted.  [whitespace/blank_line] [2]
+./criptat.cpp:42:  Line ends in whitespace.  Consider deleting these extra spaces.  [whitespace/end_of_line] [4]
+./criptat.cpp:45:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+./criptat.cpp:52:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+./criptat.cpp:59:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+./criptat.cpp:95:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
 ./servere.cpp:16:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
 ./servere.cpp:28:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
 ./servere.cpp:44:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
 ./servere.cpp:44:  If an else has a brace on one side, it should have it on both  [readability/braces] [5]
 Done processing ./colorare.cpp
+Done processing ./compresie.cpp
+Done processing ./criptat.cpp
 Done processing ./servere.cpp
-Total errors found: 10
+Total errors found: 17

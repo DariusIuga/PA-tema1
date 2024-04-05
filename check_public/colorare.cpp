@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-unsigned int get_result(vector<char> zones) {
+unsigned int get_result(const vector<char>& zones) {
     // I'll use a greedy algorithm that calculates the number of possible combinations for k zones based on the number of combinations for k-1 zones, the type of the previous tile and the type of the current tile.
 
     /* Base cases:
