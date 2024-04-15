@@ -5,10 +5,12 @@
         "*.js": "javascript",
         "*.c": "c",
         "*.cpp": "cpp",
+        "*.hs": "haskell",
         "iosfwd": "cpp",
         "iostream": "cpp",
         "numeric": "cpp",
-        "numbers": "cpp"
+        "numbers": "cpp",
+        "format": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
