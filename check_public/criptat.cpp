@@ -47,7 +47,9 @@ int get_result(vector<string> words, int password_length, const char letter, int
         double a_freq = (double)find_letter_frequency(letter, a);
         double b_freq = (double)find_letter_frequency(letter, b);
 
-        return ((a_freq / a.length()) > (b_freq / b.length()));
+        double a_ratio = a_freq / a.length();
+        double b_ratio = b_freq / b.length();
+        return a_ratio > b_ratio;
         });
 
     // We have to eliminate words from the password until the letter that was selected becomes the dominant letter in the password
