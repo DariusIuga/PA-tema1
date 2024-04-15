@@ -1,22 +1,21 @@
 /home/darius/Documents/Facultate/PA/Teme/PA-tema1/check_public/_utils/coding_style/check_cpp.py:57: DeprecationWarning: module 'sre_compile' is deprecated
   import sre_compile
-./colorare.cpp:8:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+./colorare.cpp:31:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+./colorare.cpp:43:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
+./colorare.cpp:43:  If an else has a brace on one side, it should have it on both  [readability/braces] [5]
+./colorare.cpp:55:  Missing space after ;  [whitespace/semicolon] [3]
+./colorare.cpp:56:  Redundant blank line at the start of a code block should be deleted.  [whitespace/blank_line] [2]
+./colorare.cpp:60:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+./colorare.cpp:62:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
+./colorare.cpp:62:  If an else has a brace on one side, it should have it on both  [readability/braces] [5]
+./colorare.cpp:63:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+./colorare.cpp:66:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
+./colorare.cpp:66:  If an else has a brace on one side, it should have it on both  [readability/braces] [5]
 ./colorare.cpp:68:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
-./colorare.cpp:80:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
-./colorare.cpp:80:  If an else has a brace on one side, it should have it on both  [readability/braces] [5]
-./colorare.cpp:92:  Missing space after ;  [whitespace/semicolon] [3]
-./colorare.cpp:93:  Redundant blank line at the start of a code block should be deleted.  [whitespace/blank_line] [2]
-./colorare.cpp:97:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
-./colorare.cpp:99:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
-./colorare.cpp:99:  If an else has a brace on one side, it should have it on both  [readability/braces] [5]
-./colorare.cpp:100:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
-./colorare.cpp:103:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
-./colorare.cpp:103:  If an else has a brace on one side, it should have it on both  [readability/braces] [5]
-./colorare.cpp:105:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
-./colorare.cpp:107:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
-./colorare.cpp:107:  If an else has a brace on one side, it should have it on both  [readability/braces] [5]
-./colorare.cpp:109:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
-./colorare.cpp:112:  Redundant blank line at the end of a code block should be deleted.  [whitespace/blank_line] [3]
+./colorare.cpp:70:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
+./colorare.cpp:70:  If an else has a brace on one side, it should have it on both  [readability/braces] [5]
+./colorare.cpp:72:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+./colorare.cpp:75:  Redundant blank line at the end of a code block should be deleted.  [whitespace/blank_line] [3]
 ./criptat.cpp:40:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
 ./criptat.cpp:41:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
 ./criptat.cpp:42:  Redundant blank line at the start of a code block should be deleted.  [whitespace/blank_line] [2]
@@ -34,4 +33,4 @@ Done processing ./colorare.cpp
 Done processing ./compresie.cpp
 Done processing ./criptat.cpp
 Done processing ./servere.cpp
-Total errors found: 30
+Total errors found: 29
