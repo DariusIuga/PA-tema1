@@ -1,19 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int max_vector(vector<int> vec) {
-    int max = vec[0];
 
-    for (int el : vec) {
-        if (el > max) {
-            max = el;
-        }
-    }
-
-    return max;
-}
-
+// Calculates the computational power of the system for a given current value
 double find_system_power(double current_choice, vector<int> power, vector<int> capacity) {
+    // The power of the whole system is equal to the minimum power of any server
     double min = power[0] - fabs(capacity[0] - current_choice);
     for (int i = 1; i < power.size(); i++) {
         double server_power = power[i] - fabs(capacity[i] - current_choice);
@@ -25,6 +16,8 @@ double find_system_power(double current_choice, vector<int> power, vector<int> c
     return min;
 }
 
+// The problem is solved by finding the maximum of the function 
+// find_system_power in the interval [lo, hi] using a divide et impera method
 double find_best(double lo, double hi, double old_result, vector<int> power, vector<int> capacity) {
     double mid = (lo + hi) / 2;
     double lo_power = find_system_power(lo, power, capacity);
@@ -44,12 +37,6 @@ double find_best(double lo, double hi, double old_result, vector<int> power, vec
     else {
         return find_best(lo, mid, old_result, power, capacity);
     }
-}
-
-
-double get_result(vector<int> power, vector<int> capacity) {
-    int upper_bound = max_vector(capacity);
-    return find_best(0, upper_bound, MAXFLOAT, power, capacity);
 }
 
 int main() {
@@ -75,9 +62,21 @@ int main() {
     }
     in.close();
 
+    int lower_bound = capacity[0], upper_bound = capacity[0];
+
+    for (int el : capacity) {
+        if (el > upper_bound) {
+            upper_bound = el;
+        }
+        if (el < lower_bound) {
+            lower_bound = el;
+        }
+    }
+    double best_current = find_best(lower_bound, upper_bound, MAXFLOAT, power, capacity);
+
     // Write output
     ofstream out("servere.out");
-    out << fixed << setprecision(1) << get_result(power, capacity) << "\n";
+    out << fixed << setprecision(1) << best_current << "\n";
     out.close();
 
     return 0;

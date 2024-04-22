@@ -40,9 +40,8 @@ int find_letter_frequency(const char my_ch, const string& str) {
 // This doesn't work. I should use more than 1 letter as candidates for the dominant letter
 int get_password_length(vector<string> words, int password_length, const char letter, int frequency) {
 
-    // Sort the vector of words in ascending order based on the frequency of 
-    // the letter / length of the word. This is done in order to know
-    // what words to eliminate first
+    // Sort the vector of words in ascending order based on the frequency of the letter / length of the word. This is
+    // done in order to know what words to eliminate first
     sort(words.begin(), words.end(), [letter](const string& a, const string& b) -> bool {
         double a_freq = (double)find_letter_frequency(letter, a);
         double b_freq = (double)find_letter_frequency(letter, b);
@@ -52,7 +51,8 @@ int get_password_length(vector<string> words, int password_length, const char le
         return a_ratio > b_ratio;
         });
 
-    // We have to eliminate words from the password until the letter that was selected becomes the dominant letter in the password
+    // We have to eliminate words from the password until the letter that was selected becomes the dominant letter in
+    // the password
     while (frequency <= password_length / 2) {
         // Update the password by deleting the worst word from it.
         if (password_length == 0) {

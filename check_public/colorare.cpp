@@ -28,7 +28,9 @@ unsigned long long log_power(unsigned int base, unsigned int exp) {
 
 
 unsigned int get_nr_combinations(const vector<Group>& groups) {
-    // I'll use a greedy algorithm that calculates the number of possible combinations for k zones based on the number of combinations for k-1 zones, the type of the previous tile and the type of the current tile.
+    // I'll use a greedy algorithm that calculates the number of possible
+    // combinations for k zones based on the number of combinations for k-1
+    // zones, the type of the previous tile and the type of the current tile.
 
     /* Base cases:
 
@@ -57,19 +59,23 @@ unsigned int get_nr_combinations(const vector<Group>& groups) {
         if (groups[i - 1].type == 'V') {
             nr_paintings = (nr_paintings * 2) % MOD;
             if (groups[i].type == 'V') {
-                nr_paintings = (nr_paintings * log_power(2, groups[i].nr_zones - 1)) % MOD;
+                nr_paintings = (nr_paintings * \
+                    log_power(2, groups[i].nr_zones - 1)) % MOD;
             }
             else {
-                nr_paintings = (nr_paintings * log_power(3, groups[i].nr_zones - 1)) % MOD;
+                nr_paintings = (nr_paintings * \
+                    log_power(3, groups[i].nr_zones - 1)) % MOD;
             }
         }
         else {
             if (groups[i].type == 'V') {
-                nr_paintings = (nr_paintings * log_power(2, groups[i].nr_zones - 1)) % MOD;
+                nr_paintings = (nr_paintings * \
+                    log_power(2, groups[i].nr_zones - 1)) % MOD;
             }
             else {
                 nr_paintings = (nr_paintings * 3) % MOD;
-                nr_paintings = (nr_paintings * log_power(3, groups[i].nr_zones - 1)) % MOD;
+                nr_paintings = (nr_paintings * \
+                    log_power(3, groups[i].nr_zones - 1)) % MOD;
             }
         }
 

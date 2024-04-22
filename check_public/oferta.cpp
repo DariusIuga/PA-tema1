@@ -27,8 +27,8 @@ const unsigned int apply_triple_discount(const unsigned int first, const unsigne
 }
 
 double find_min_price(const unsigned int products[], const unsigned int nr_products) {
-    // Subproblem: dp[i] -> The minimum price for buying the first i+1 products from the array
-    // Goal: find dp[nr_products - 1]
+    // Subproblem: dp[i] -> The minimum price for buying the first i+1 products
+    // from the array Goal: find dp[nr_products - 1]
 
     double dp[MAX_ARR_LEN];
 
@@ -43,10 +43,10 @@ double find_min_price(const unsigned int products[], const unsigned int nr_produ
 
     dp[2] = min(min(product_and_pair, pair_and_product), first_triple);
 
-    // General case: dp [i], i = 3..nr_products - 1
-    // It is found by calculating the result of dp[i-1], dp[i-2] and
-    // dp[i - 3] + the last product price, last pair price,
-    // and last triple price respectively, and finding the minimum of all 3.
+    // General case: dp [i], i = 3..nr_products - 1 It is found by calculating
+    // the result of dp[i-1], dp[i-2] and dp[i - 3] + the last product price,
+    // last pair price, and last triple price respectively, and finding the
+    // minimum of all 3.
     double prev_and_one_product, prev_and_pair, prev_and_triple;
 
     for (unsigned int i = 3; i < nr_products; i++) {
