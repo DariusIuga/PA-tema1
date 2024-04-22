@@ -26,7 +26,6 @@ unsigned long long log_power(unsigned int base, unsigned int exp) {
     return result;
 }
 
-
 unsigned int get_nr_combinations(const vector<Group>& groups) {
     // I'll use a greedy algorithm that calculates the number of possible
     // combinations for k zones based on the number of combinations for k-1
@@ -41,8 +40,7 @@ unsigned int get_nr_combinations(const vector<Group>& groups) {
     unsigned int nr_paintings;
     if (groups[0].type == 'V') {
         nr_paintings = (3 * log_power(2, groups[0].nr_zones - 1)) % MOD;
-    }
-    else {
+    } else {
         nr_paintings = (6 * log_power(3, groups[0].nr_zones - 1)) % MOD;
     }
 
@@ -54,31 +52,26 @@ unsigned int get_nr_combinations(const vector<Group>& groups) {
     1) prev_zone == 'H', current_zone == 'H' => nr_current = 3 * nr_prev
 
     */
-    for (int i = 1;i < groups.size();i++) {
-
+    for (int i = 1; i < groups.size(); i++) {
         if (groups[i - 1].type == 'V') {
             nr_paintings = (nr_paintings * 2) % MOD;
             if (groups[i].type == 'V') {
-                nr_paintings = (nr_paintings * \
-                    log_power(2, groups[i].nr_zones - 1)) % MOD;
+                nr_paintings =
+                    (nr_paintings * log_power(2, groups[i].nr_zones - 1)) % MOD;
+            } else {
+                nr_paintings =
+                    (nr_paintings * log_power(3, groups[i].nr_zones - 1)) % MOD;
             }
-            else {
-                nr_paintings = (nr_paintings * \
-                    log_power(3, groups[i].nr_zones - 1)) % MOD;
-            }
-        }
-        else {
+        } else {
             if (groups[i].type == 'V') {
-                nr_paintings = (nr_paintings * \
-                    log_power(2, groups[i].nr_zones - 1)) % MOD;
-            }
-            else {
+                nr_paintings =
+                    (nr_paintings * log_power(2, groups[i].nr_zones - 1)) % MOD;
+            } else {
                 nr_paintings = (nr_paintings * 3) % MOD;
-                nr_paintings = (nr_paintings * \
-                    log_power(3, groups[i].nr_zones - 1)) % MOD;
+                nr_paintings =
+                    (nr_paintings * log_power(3, groups[i].nr_zones - 1)) % MOD;
             }
         }
-
     }
 
     return nr_paintings;
@@ -106,7 +99,6 @@ int main() {
     // Write output
     ofstream out("colorare.out");
     out << get_nr_combinations(groups) << "\n";
-
 
     out.close();
 

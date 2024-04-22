@@ -25,21 +25,23 @@ int find_letter_frequency(const char my_ch, const string& str) {
     return freq;
 }
 
-int get_password_length(vector<string> words, int password_length, const char letter, int frequency) {
+int get_password_length(vector<string> words, int password_length,
+                        const char letter, int frequency) {
+    // Sort the vector of words in ascending order based on the frequency of the
+    // letter / length of the word. This is done in order to know what words to
+    // eliminate first
+    sort(words.begin(), words.end(),
+         [letter](const string& a, const string& b) -> bool {
+             double a_freq = (double)find_letter_frequency(letter, a);
+             double b_freq = (double)find_letter_frequency(letter, b);
 
-    // Sort the vector of words in ascending order based on the frequency of the letter / length of the word. This is
-    // done in order to know what words to eliminate first
-    sort(words.begin(), words.end(), [letter](const string& a, const string& b) -> bool {
-        double a_freq = (double)find_letter_frequency(letter, a);
-        double b_freq = (double)find_letter_frequency(letter, b);
+             double a_ratio = a_freq / a.length();
+             double b_ratio = b_freq / b.length();
+             return a_ratio > b_ratio;
+         });
 
-        double a_ratio = a_freq / a.length();
-        double b_ratio = b_freq / b.length();
-        return a_ratio > b_ratio;
-        });
-
-    // We have to eliminate words from the password until the letter that was selected becomes the dominant letter in
-    // the password
+    // We have to eliminate words from the password until the letter that was
+    // selected becomes the dominant letter in the password
     while (frequency <= password_length / 2) {
         // Update the password by deleting the worst word from it.
         if (password_length == 0) {
@@ -50,7 +52,8 @@ int get_password_length(vector<string> words, int password_length, const char le
         password_length -= last_string.length();
         frequency -= find_letter_frequency(letter, last_string);
 
-        // Deleting the last word is done in O(1) time, that's why the list was sorted in descending order.
+        // Deleting the last word is done in O(1) time, that's why the list was
+        // sorted in descending order.
         words.pop_back();
     }
 
@@ -78,13 +81,16 @@ int main() {
     }
     in.close();
 
-    // Get a hashmap of all letters that occur in the password and their frequencies
+    // Get a hashmap of all letters that occur in the password and their
+    // frequencies
     unordered_map<char, int> letterCount = countLetters(words);
     int max_password_length = 0;
 
-    // For every letter, delete words from the password until it becomes the dominant letter
+    // For every letter, delete words from the password until it becomes the
+    // dominant letter
     for (const auto& pair : letterCount) {
-        int password_length = get_password_length(words, total_length, pair.first, pair.second);
+        int password_length =
+            get_password_length(words, total_length, pair.first, pair.second);
         // Get the longest password with a given dominant letter
         if (password_length > max_password_length) {
             max_password_length = password_length;
@@ -94,7 +100,6 @@ int main() {
     // Write output
     ofstream out("criptat.out");
     out << max_password_length << "\n";
-
 
     out.close();
 
