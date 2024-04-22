@@ -1,29 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-tuple<char, int> most_common_letter(const vector<string>& words) {
-    // I need a hashmap for this
-    unordered_map<char, int> letterFreq;
+unordered_map<char, int> countLetters(const vector<string>& strings) {
+    unordered_map<char, int> letterCount;
 
-    for (const string& word : words) {
-        // Count occurrences of each letter in the word
-        for (char letter : word) {
-            letterFreq[letter]++;
+    for (const string& str : strings) {
+        for (char c : str) {
+            // Increment count for the letter
+            letterCount[c]++;
         }
     }
 
-    char mostCommon = '\0';
-    int maxFreq = 0;
-
-    for (const auto& pair : letterFreq) {
-        // Look at each value in the hashmap for the frequencies
-        if (pair.second > maxFreq) {
-            maxFreq = pair.second;
-            mostCommon = pair.first;
-        }
-    }
-
-    return make_tuple(mostCommon, maxFreq);
+    return letterCount;
 }
 
 int find_letter_frequency(const char my_ch, const string& str) {
@@ -37,7 +25,6 @@ int find_letter_frequency(const char my_ch, const string& str) {
     return freq;
 }
 
-// This doesn't work. I should use more than 1 letter as candidates for the dominant letter
 int get_password_length(vector<string> words, int password_length, const char letter, int frequency) {
 
     // Sort the vector of words in ascending order based on the frequency of the letter / length of the word. This is
@@ -68,19 +55,6 @@ int get_password_length(vector<string> words, int password_length, const char le
     }
 
     return password_length;
-}
-
-unordered_map<char, int> countLetters(const vector<string>& strings) {
-    unordered_map<char, int> letterCount;
-
-    for (const string& str : strings) {
-        for (char c : str) {
-            // Increment count for the letter
-            letterCount[c]++;
-        }
-    }
-
-    return letterCount;
 }
 
 int main() {
