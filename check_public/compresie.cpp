@@ -1,70 +1,76 @@
-#include <bits/stdc++.h>
+#include <fstream>
+
 using namespace std;
 
-// Functie pentru calcularea dp
-int computeDP(const vector<int>& A, const vector<int>& B) {
-    int n = A.size(), m = B.size();
-    vector<vector<int>> dp(n + 1, vector<int>(m + 1));
+#define MAX_ARR_LEN 300'000
 
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= m; j++) {
-            dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+unsigned int compress_arrays(unsigned int A[], unsigned int n, unsigned int B[], unsigned int m) {
+    unsigned int length_seen_array = 0;
+    unsigned int end_subarray_a = 0, end_subarray_b = 0;
+    unsigned long long sum_subarray_a = A[0], sum_subarray_b = B[0];
 
-            // Verificam daca se pot elimina elemente din A
-            for (int k = 1; k < i; k++) {
-                int sumA = 0;
-                for (int l = k; l < i; l++) {
-                    sumA += A[l];
-                }
+    while (end_subarray_a < n && end_subarray_b < m)
+    {
+        if (sum_subarray_a < sum_subarray_b)
+        {
+            end_subarray_a++;
+            sum_subarray_a += A[end_subarray_a];
+        }
+        else if (sum_subarray_a > sum_subarray_b)
+        {
+            end_subarray_b++;
+            sum_subarray_b += B[end_subarray_b];
+        }
+        else
+        {
+            end_subarray_a++;
+            end_subarray_b++;
+            length_seen_array++;
 
-                // Verificam daca se pot elimina elemente din B
-                for (int l = 1; l < j; l++) {
-                    int sumB = 0;
-                    for (int r = l; r < j; r++) {
-                        sumB += B[r];
-                    }
-
-                    // Daca sumele sunt egale, actualizam dp
-                    if (sumA == sumB) {
-                        dp[i][j] = max(dp[i][j], dp[k - 1][l - 1] + sumA + 1);
-                    }
-                }
-            }
+            sum_subarray_a = A[end_subarray_a];
+            sum_subarray_b = B[end_subarray_b];
         }
     }
 
-    return dp[n][m];
+    return length_seen_array;
 }
 
-int main() {
-    std::ios::sync_with_stdio(false);
+int main()
+{
+    ios::sync_with_stdio(false);
 
-    int n, m;
-
-    // Read input
     ifstream in("compresie.in");
 
+    unsigned int n, m, A[MAX_ARR_LEN], B[MAX_ARR_LEN];
+    unsigned long long total_sum_a, total_sum_b;
+
+    // Get input
     in >> n;
-    vector<int> A;
-    for (int i = 0; i < n; ++i) {
-        int nr;
-        in >> nr;
-        A.push_back(nr);
+
+    for (unsigned int i = 0; i < n; i++) {
+        in >> A[i];
+        total_sum_a += A[i];
     }
 
     in >> m;
-    vector<int> B;
-    for (int i = 0; i < m; ++i) {
-        int nr;
-        in >> nr;
-        B.push_back(nr);
+
+    for (unsigned int i = 0; i < m; i++) {
+        in >> B[i];
+        total_sum_b += B[i];
     }
-    in.close();
+
+    ofstream out("compresie.out");
 
     // Write output
-    ofstream out("compresie.out");
-    out << -1 << "\n";
-    out.close();
+    if (total_sum_a != total_sum_b) {
+        out << -1;
+        return 0;
+    }
 
+    out << compress_arrays(A, n, B, m);
+
+    in.close();
+    out.close();
     return 0;
 }
+

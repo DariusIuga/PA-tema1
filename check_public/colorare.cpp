@@ -27,7 +27,7 @@ unsigned long long log_power(unsigned int base, unsigned int exp) {
 }
 
 
-unsigned int get_result(const vector<Group>& groups) {
+unsigned int get_nr_combinations(const vector<Group>& groups) {
     // I'll use a greedy algorithm that calculates the number of possible combinations for k zones based on the number of combinations for k-1 zones, the type of the previous tile and the type of the current tile.
 
     /* Base cases:
@@ -79,7 +79,7 @@ unsigned int get_result(const vector<Group>& groups) {
 }
 
 int main() {
-    std::ios::sync_with_stdio(false);
+    ios::sync_with_stdio(false);
 
     int nr_groups;
 
@@ -99,7 +99,7 @@ int main() {
 
     // Write output
     ofstream out("colorare.out");
-    out << get_result(groups) << "\n";
+    out << get_nr_combinations(groups) << "\n";
 
 
     out.close();
